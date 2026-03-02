@@ -1,4 +1,12 @@
 {
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix portfolio run start",
+    "dev": "npm --prefix portfolio run dev",
+    "build": "npm --prefix portfolio run build",
+    "lint": "npm --prefix portfolio run lint",
+    "preview": "npm --prefix portfolio run preview"
+  },
   "dependencies": {
     "bootstrap": "^5.3.3",
     "react-bootstrap": "^2.10.5"
