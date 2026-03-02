@@ -700,6 +700,7 @@ z-index: 0;
   gap: 12px;
 }
 
+
 .footer::after {
   content: "";
   position: absolute;

@@ -10,6 +10,7 @@ const cardVariants = {
   }
 };
 
+
 export const ProjectCards = ({ title, description, imgUrl, url, techStack, cta }) => {
   return (
     <Col sm={6} md={4}>
