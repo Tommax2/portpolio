@@ -10,6 +10,16 @@ export const NavBar = () =>{
     const [scrolled, setScrolled] = useState(false);
     const [expanded, setExpanded] = useState(false);
 
+    useEffect(() => {
+      const onHashChange = () => {
+        const hash = (window.location.hash || '#home').replace('#', '');
+        setActiveLink(hash);
+      };
+      onHashChange();
+      window.addEventListener('hashchange', onHashChange);
+      return () => window.removeEventListener('hashchange', onHashChange);
+    }, []);
+
      useEffect(() =>{
        const onScroll = () =>{
          if (window.scrollY > 50){
@@ -30,7 +40,7 @@ export const NavBar = () =>{
           expand="lg"
           expanded={expanded}
           onToggle={(nextExpanded) => setExpanded(nextExpanded)}
-          className={scrolled ? 'scrolled':"" }
+          className={`${scrolled ? 'scrolled' : ''} navbar-glass`}
         >
         <Container>
           <Navbar.Brand href="#home">
@@ -48,10 +58,10 @@ export const NavBar = () =>{
             
             <span className="navbar-text">
                 <div className='social-icon'>
-                    <a href="https://github.com/Tommax2"><FaGithub color="white" size={20} /></a>
-                    <a href="https://www.linkedin.com/in/martins-olumi-9b6b07317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><FaLinkedin color="white" size={20} /></a>
-                    <a href="https://wa.me/2348110736175"><FaWhatsapp color="white" size={20} /></a>
-                    <a href="#"><FaFacebook color="white" size={20} /></a>
+                    <a href="https://github.com/Tommax2" target="_blank" rel="noreferrer"><FaGithub color="white" size={20} /></a>
+                    <a href="https://www.linkedin.com/in/martins-olumi-9b6b07317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noreferrer"><FaLinkedin color="white" size={20} /></a>
+                    <a href="https://wa.me/2348110736175" target="_blank" rel="noreferrer"><FaWhatsapp color="white" size={20} /></a>
+                    <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebook color="white" size={20} /></a>
                 </div>
                 <button className='vvd' onClick={() => window.location.href = 'https://wa.me/2348110736175'}><span>Let's connect</span></button>
             </span>
