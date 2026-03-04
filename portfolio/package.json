@@ -15,7 +15,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^4.21.1",
-    "framer-motion": "^12.24.12",
+    "framer-motion": "^12.34.5",
     "jimp": "^1.6.0",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.15",
