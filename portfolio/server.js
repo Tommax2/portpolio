@@ -31,6 +31,13 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
+// SPA fallback for client-side routes (e.g. /terms-and-conditions)
+app.get("*", (req, res, next) => {
+    if (req.path.startsWith("/contact") || req.path.startsWith("/ping")) {
+        return next();
+    }
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 // Email configuration for Brevo (formerly Sendinblue)
 const contactEmail = createTransport({
     host: "smtp-relay.brevo.com",
