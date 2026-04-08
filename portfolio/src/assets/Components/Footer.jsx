@@ -1,7 +1,9 @@
-import { Col, Row, Container } from "react-bootstrap"
-import { FaGithub, FaLinkedin, FaWhatsapp, FaFacebook } from 'react-icons/fa';
+import { Col, Row, Container } from "react-bootstrap";
+import { FaGithub, FaLinkedin, FaWhatsapp, FaFacebook } from "react-icons/fa";
 
 export const Footer = () => {
+  const baseUrl = import.meta.env.BASE_URL || "/";
+
   return (
     <footer className="footer">
       <Container>
@@ -15,15 +17,27 @@ export const Footer = () => {
           </Col>
           <Col sm={6} className="text-center text-sm-end">
             <div className="social-icon">
-              <a href="https://github.com/Tommax2"><FaGithub color="white" size={20} /></a>
-              <a href="https://www.linkedin.com/in/tomisin-olumi-1024773a6"><FaLinkedin color="white" size={20} /></a>
-              <a href="https://wa.me/2348110736175"><FaWhatsapp color="white" size={20} /></a>
-              <a href=""><FaFacebook color="white" size={20} /></a>
+              <a href="https://github.com/Tommax2">
+                <FaGithub color="white" size={20} />
+              </a>
+              <a href="https://www.linkedin.com/in/tomisin-olumi-1024773a6">
+                <FaLinkedin color="white" size={20} />
+              </a>
+              <a href="https://wa.me/2348110736175">
+                <FaWhatsapp color="white" size={20} />
+              </a>
+              <a href="">
+                <FaFacebook color="white" size={20} />
+              </a>
+            </div>
+            <div className="footer-links">
+              <a href={`${baseUrl}#/terms-and-conditions`}>Terms and Conditions</a>
+              <a href={`${baseUrl}#/privacy-policy`}>Privacy Policy</a>
             </div>
             <p>© 2026 Martins(TOMMAX). All Rights Reserved.</p>
           </Col>
         </Row>
       </Container>
     </footer>
-  )
-}
+  );
+};
