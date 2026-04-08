@@ -5,6 +5,9 @@ export const TermsAndConditions = () => {
     <section className="legal-page">
       <Container>
         <h1>Terms and Conditions</h1>
+        <a href="#/" className="d-inline-block mb-3">
+          ← Back to Home
+        </a>
         <p>Last updated: April 8, 2026</p>
 
         <h2>Agreement to Terms</h2>

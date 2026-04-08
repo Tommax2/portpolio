@@ -5,6 +5,9 @@ export const PrivacyPolicy = () => {
     <section className="legal-page">
       <Container>
         <h1>Privacy Policy</h1>
+        <a href="#/" className="d-inline-block mb-3">
+          ← Back to Home
+        </a>
         <p>Last updated: April 8, 2026</p>
 
         <h2>Overview</h2>
