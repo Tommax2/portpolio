@@ -12,7 +12,7 @@ import { PrivacyPolicy } from "./assets/Components/PrivacyPolicy";
 function App() {
   const rawHash = window.location.hash.replace("#", "");
   const normalizedPath = rawHash
-    ? rawHash.startsWith("/") ? rawHash : `/${rawHash}`
+    ? (rawHash.startsWith("/") ? rawHash : `/${rawHash}`)
     : "/";
 
   if (normalizedPath === "/terms-and-conditions") {
