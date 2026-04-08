@@ -3,10 +3,7 @@ services:
     name: tommax-portfolio
     env: node
     plan: free
-    branch: master
-    # If your Render service already exists, you can either:
-    # 1) Update it in the dashboard to match these commands, OR
-    # 2) Create a new service from this blueprint.
+    branch: main
     buildCommand: cd portfolio && npm ci && npm run build
     startCommand: cd portfolio && npm run start
     autoDeploy: true

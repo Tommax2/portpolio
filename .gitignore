@@ -17,3 +17,7 @@ build/
 
 # misc
 .DS_Store
+
+# never commit local git copies
+.git_disabled/
+.git_disabled_local_backup/
