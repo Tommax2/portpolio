@@ -67,7 +67,7 @@ export const Banner = () => {
                 complex ideas into elegant, user-centric applications — and
                 complex datasets into clear, compelling stories that drive
                 smarter decisions. Explore my work and let's build something
-                amazing together
+                amazing together.
               </p>
               <button
                 onClick={() =>
