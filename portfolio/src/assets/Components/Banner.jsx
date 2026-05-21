@@ -57,14 +57,14 @@ export const Banner = () => {
             >
               <span className="tagline">Welcome to my portfolio</span>
               <h1>
-                {"Hi, I`m Martins"} <span className="wrap">{text}</span>
+                {"Hi, I'm Martins"} <span className="wrap">{text}</span>
               </h1>
               <p>
                 I am a dedicated Developer and Data Analyst with a passion for
                 building innovative digital solutions and turning raw data into
                 actionable insights. With expertise in modern web technologies,
                 data visualization, and statistical analysis, I transform
-                complex ideas into elegant, user-centric applications — and
+                complex ideas into elegant, user-centric applications and
                 complex datasets into clear, compelling stories that drive
                 smarter decisions. Explore my work and let's build something
                 amazing together.
@@ -74,7 +74,7 @@ export const Banner = () => {
                   (window.location.href = "https://wa.me/2348110736175")
                 }
               >
-                let's connect <ArrowRightCircle size={25} />
+                Let's connect <ArrowRightCircle size={25} />
               </button>
             </motion.div>
           </Col>
@@ -108,3 +108,4 @@ export const Banner = () => {
     </section>
   );
 };
+

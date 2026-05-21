@@ -1,6 +1,5 @@
 
 import { useEffect, useState } from 'react';
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FaGithub, FaLinkedin, FaWhatsapp, FaFacebook } from 'react-icons/fa';
@@ -42,9 +41,9 @@ export const NavBar = () =>{
           onToggle={(nextExpanded) => setExpanded(nextExpanded)}
           className={`${scrolled ? 'scrolled' : ''} navbar-glass`}
         >
-        <Container>
+        <div className="navbar-shell">
           <Navbar.Brand href="#home">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" className="logo-img" style={{ width: '50px', borderRadius: '50%' }} />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" className="logo-img" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           
@@ -67,7 +66,7 @@ export const NavBar = () =>{
             </span>
            
           </Navbar.Collapse>
-        </Container>
+        </div>
       </Navbar>
     );
     
