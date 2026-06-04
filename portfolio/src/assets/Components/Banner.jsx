@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from "react-bootstrap-icons";
-import Port1 from "../img/port1.jpg";
+import Port1 from "../img/port1.jpeg";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
