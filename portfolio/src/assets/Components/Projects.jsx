@@ -1,23 +1,48 @@
 import { Tab } from "react-bootstrap";
 import { Container, Row, Col, Nav } from "react-bootstrap";
-import { Camera } from "react-bootstrap-icons";
 import { ProjectCards } from "./ProjectCards";
 import { motion } from "framer-motion";
-import  House  from "../img/house3.jpg";
 import Jais from "../img/logo.jpeg";
 import camera3 from "../img/camera3.jpg";
 import Machine from "../img/machine.jpeg";
 import background from "../img/background-optimized.jpg";
-import Books from "../img/kids-books.jpg"
+import TransformedAcademy from "../img/thetransformed.jpeg";
+import Funora from "../img/funora.png";
+import Alatike from "../img/alatike.svg";
+import Riikys from "../img/riikys.jpg";
 
 export const Projects = () => {
   const projects = [
     {
+      title: "Rikkys Perfume",
+      description: "A responsive perfume e-commerce website where customers can explore fragrances and enjoy a polished, easy-to-use shopping experience.",
+      techStack: "React, JavaScript, Responsive Design, E-commerce",
+      cta: "WhatsApp me",
+      imgUrl: Riikys,
+      url: "https://rikkys-perfume.vercel.app/",
+    },
+    {
+      title: "Alatike Pro",
+      description: "A responsive bridal beauty website showcasing makeup and gele services, a filterable gallery, virtual consultations, and an easy booking experience.",
+      techStack: "React, Responsive Design, Booking Integration",
+      cta: "WhatsApp me",
+      imgUrl: Alatike,
+      url: "https://alatikepro.com",
+    },
+    {
+      title: "Fundora Media",
+      description: "A responsive media platform featuring talent booking, authoring, blogging, and crowdfunding tools in one user-friendly experience.",
+      techStack: "React, REST API Backend",
+      cta: "WhatsApp me",
+      imgUrl: Funora,
+      url: "https://www.fundoramedia.com",
+    },
+    {
       title: "TheTransformedMeAcademy",
-      description: "A full e-commerce online store for selling books, featuring product categories, a shopping cart, fast delivery, and a mobile-responsive design.",
+      description: "A responsive language-learning program website that helps students discover courses, explore learning opportunities, and enroll in programs.",
       techStack: "React, Node.js, Express, MongoDB, Stripe, Redux",
       cta: "WhatsApp me",
-      imgUrl: Books,
+      imgUrl: TransformedAcademy,
       url: "https://thetransformedmeacademy.com",
     },
     {
@@ -80,48 +105,20 @@ export const Projects = () => {
             </Nav>
             <Tab.Content>
                 <Tab.Pane eventKey ="first">
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={{
-                    visible: {
-                      transition: {
-                        staggerChildren: 0.2
-                      }
-                    }
-                  }}
-                >
-                <Row>
-  {projects.map((project, index) => {
-    return (
-      <ProjectCards key={index} {...project} />
-    );
-  })}
-</Row>
-                </motion.div>
+                <Row className="g-4">
+                  {projects.map((project) => (
+                    <ProjectCards key={project.url} {...project} />
+                  ))}
+                </Row>
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={{
-                      visible: {
-                        transition: {
-                          staggerChildren: 0.2
-                        }
-                      }
-                    }}
-                  >
-                    <Row>
-                      {designProjects.map((project, index) => {
+                    <Row className="g-4">
+                      {designProjects.map((project) => {
                         return (
-                          <ProjectCards key={index} {...project} />
+                          <ProjectCards key={project.url} {...project} />
                         );
                       })}
                     </Row>
-                  </motion.div>
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
                   <p>I am always open to new opportunities and collaborations. If you have a project in mind, feel free to reach out!</p>

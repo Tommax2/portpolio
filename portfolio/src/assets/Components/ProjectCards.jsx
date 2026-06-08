@@ -13,9 +13,12 @@ const cardVariants = {
 
 export const ProjectCards = ({ title, description, imgUrl, url, techStack, cta }) => {
   return (
-    <Col sm={6} md={4}>
+    <Col sm={6} md={4} className="d-flex">
       <motion.div
         variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
         className="project-card-wrapper"
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3 }}
