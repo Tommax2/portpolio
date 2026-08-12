@@ -526,21 +526,39 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon{
   height: auto;
   margin: 0 auto;
   position: relative;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
 }
 
 .skill-slider .item {
-  padding: 0 20px;
+  min-height:170px;
+  padding:28px 18px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:var(--surface-2);
 }
+.skill-slider .item h5 { margin:0; color:var(--text); font-size:14px; line-height:1.35; letter-spacing:.025em; text-transform:none; }
+.skill-slider .item svg { flex:0 0 auto; filter:drop-shadow(0 10px 18px rgba(74,47,189,.15)); }
+.skill-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:7px; margin-top:2px; }
+.skill-stack span { padding:5px 9px; border:1px solid var(--line); border-radius:999px; background:color-mix(in srgb,var(--surface) 72%,transparent); color:var(--muted); font-size:10px; line-height:1.2; }
 
 @media screen and (max-width: 768px) {
   .skill-slider {
     width: 100%;
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
 .skill-slider .item img{
   width: 50%;
   margin: 0 auto 15px auto;
 }
+@media screen and (max-width: 420px) { .skill-slider { grid-template-columns:1fr; } }
 
 /* projects */
 .project{
@@ -1551,6 +1569,8 @@ html[data-theme="light"] .skill { background:rgba(247,246,252,.72); backdrop-fil
 .hero-portrait { position:relative; padding:18px; }
 .hero-portrait::before { content:""; position:absolute; inset:0; border:1px solid var(--line); border-radius:46% 46% 24px 24px; transform:rotate(4deg); }
 .hero-portrait::after { content:""; position:absolute; width:72px; height:72px; right:-2px; bottom:4px; border-radius:50%; background:var(--accent); opacity:.9; z-index:-1; }
+.banner .hero-floating-image { display:block; width:100%; max-width:100%; height:auto; position:relative; z-index:1; transform-origin:center; will-change:transform; animation:hero-float 5.8s ease-in-out infinite; }
+@keyframes hero-float { 0%,100% { transform:translate3d(0,-8px,0) rotate(0deg); } 50% { transform:translate3d(0,12px,0) rotate(1.5deg); } }
 .project-card-wrapper { position:relative; }
 .project-card-wrapper::after { content:""; position:absolute; inset:auto 0 0; height:3px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .3s ease; }
 .project-card-wrapper:hover::after { transform:scaleX(1); }
@@ -1701,8 +1721,11 @@ html[data-theme="light"] .aurora { opacity:.2; }
   .hero-proof { width:100%; grid-template-columns:repeat(3,1fr); }
   .hero-proof > div { min-width:0; }
   .hero-proof strong, .hero-proof span { overflow-wrap:anywhere; }
-  .hero-portrait { width:min(88%,390px); margin-left:auto; margin-right:auto; }
+  .hero-portrait { width:min(82%,340px); margin:28px auto 0; padding:10px; }
   .hero-portrait img { display:block; max-width:100%; }
+  .hero-portrait::before { inset:3px; border-radius:42% 42% 20px 20px; transform:rotate(2deg); }
+  .hero-portrait::after { width:48px; height:48px; right:0; bottom:0; opacity:.7; }
+  .banner .hero-floating-image { animation-name:hero-float-mobile; animation-duration:6.5s; }
 
   .skill-bx { margin-top:0; }
   .skill-slider .item { padding:0 8px; }
@@ -1723,6 +1746,8 @@ html[data-theme="light"] .aurora { opacity:.2; }
   .footer-links { padding-inline:8px; }
 }
 
+@keyframes hero-float-mobile { 0%,100% { transform:translate3d(0,-3px,0); } 50% { transform:translate3d(0,7px,0); } }
+
 @media (max-width:374px) {
   .banner .container, .skill .container, .contact .container,
   .experience .container, .project .container, .footer .container { padding-left:14px; padding-right:14px; }
@@ -1731,4 +1756,12 @@ html[data-theme="light"] .aurora { opacity:.2; }
   .projects-page .project .nav.nav-pills { grid-template-columns:1fr; }
   .projects-page .project .nav.nav-pills .nav-link { min-height:42px; }
   .experience-page .experience-row, .projects-page .proj-txtx { padding-left:20px; padding-right:20px; }
+  .hero-portrait { width:min(78%,280px); margin-top:22px; }
+}
+
+@media (min-width:768px) and (max-width:991.98px) {
+  .banner .row { align-items:center; }
+  .banner h1 { font-size:clamp(3rem,6.4vw,4.5rem); }
+  .hero-portrait { width:min(100%,360px); margin-left:auto; padding:14px; }
+  .banner .hero-floating-image { animation-duration:6.2s; }
 }

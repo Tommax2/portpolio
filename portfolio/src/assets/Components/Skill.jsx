@@ -1,30 +1,16 @@
 import { Col, Container, Row } from 'react-bootstrap';
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { motion } from "framer-motion";
 import { FaCode, FaPaintBrush, FaMobileAlt, FaDatabase, FaChartLine, FaServer } from "react-icons/fa";
 
 export const Skill = () => {
-
-    const responsive = {
-        superLargeDesktop: {
-          // the naming can be any, depends on you.
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 1
-        }
-      };
+    const skills = [
+        { label: "Web Development", icon: FaCode, color: "#aa367c", stack: ["HTML", "CSS", "JavaScript", "Git"] },
+        { label: "Web Design", icon: FaPaintBrush, color: "#4a2fbd", stack: ["Figma", "Wireframing", "Prototyping", "Design Systems"] },
+        { label: "UI/UX Design", icon: FaMobileAlt, color: "#aa367c", stack: ["User Research", "Responsive UI", "Accessibility", "Usability"] },
+        { label: "Frontend Development", icon: FaDatabase, color: "#4a2fbd", stack: ["React", "Bootstrap", "Framer Motion", "REST APIs"] },
+        { label: "Data Analysis", icon: FaChartLine, color: "#aa367c", stack: ["Excel", "SQL", "Power BI", "Data Storytelling"] },
+        { label: "Backend Development", icon: FaServer, color: "#4a2fbd", stack: ["Node.js", "Express", "MongoDB", "API Integration"] },
+    ];
 
     return (
         <section className='skill' id='Skill'>
@@ -37,70 +23,28 @@ export const Skill = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h2>Technical Proficiency</h2>
-                            <p>I possess a diverse set of technical skills, ranging from front-end development to back-end architecture. I am constantly learning and adapting to new technologies to deliver high-quality, scalable results.</p>
-                            <Carousel responsive={responsive} infinite={true} className='skill-slider'>
-                               
-                            <motion.div 
-                                className='item'
-                                whileHover={{ rotateY: 20, rotateX: 10, scale: 1.1 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <FaCode size={80} color="#aa367c" />
-                                <h5>WEB DEVELOPMENT</h5>
-                            </motion.div>
-                            
-                                 
-                            <motion.div 
-                                className='item'
-                                whileHover={{ rotateY: 20, rotateX: 10, scale: 1.1 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <FaPaintBrush size={80} color="#4a2fbd" />
-                                <h5>WEB DESIGN</h5>
-                            </motion.div>
-
-     
-                            <motion.div 
-                                className='item'
-                                whileHover={{ rotateY: 20, rotateX: 10, scale: 1.1 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <FaMobileAlt size={80} color="#aa367c" />
-                                <h5>UI/UX DESIGN</h5>
-                            </motion.div>
-
-     
-                            <motion.div 
-                                className='item'
-                                whileHover={{ rotateY: 20, rotateX: 10, scale: 1.1 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <FaDatabase size={80} color="#4a2fbd" />
-                                <h5>FRONTEND DEVELOPMENT</h5>
-                            </motion.div>
-
-     
-                            <motion.div 
-                                className='item'
-                                whileHover={{ rotateY: 20, rotateX: 10, scale: 1.1 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <FaChartLine size={80} color="#aa367c" />
-                                <h5>DATA ANALYST</h5>
-                            </motion.div>
-
-                            <motion.div 
-                                className='item'
-                                whileHover={{ rotateY: 20, rotateX: 10, scale: 1.1 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
-                                <FaServer size={80} color="#4a2fbd" />
-                                <h5>BACKEND DEVELOPMENT</h5>
-                            </motion.div>
-
-
-                            </Carousel>
+                            <span className="eyebrow">What I do</span>
+                            <h2>Skills I use to bring ideas to life.</h2>
+                            <p>From interface design to backend systems and data analysis, I use the right tools to build practical, reliable digital products.</p>
+                            <div className='skill-slider'>
+                                {skills.map(({ label, icon: Icon, color, stack }, index) => (
+                                    <motion.div
+                                        className='item'
+                                        key={label}
+                                        initial={{ opacity: 0, y: 18 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        whileHover={{ y: -6, scale: 1.03 }}
+                                        transition={{ duration: 0.3, delay: index * 0.04 }}
+                                    >
+                                        <Icon size={58} color={color} />
+                                        <h5>{label}</h5>
+                                        <div className="skill-stack" aria-label={`${label} technology stack`}>
+                                            {stack.map((technology) => <span key={technology}>{technology}</span>)}
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </motion.div>
                     </Col>
                 </Row>

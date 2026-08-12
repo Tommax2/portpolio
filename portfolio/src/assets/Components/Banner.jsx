@@ -74,18 +74,7 @@ export const Banner = () => {
                 src={Port1}
                 alt="Martins Olumi"
                 loading="lazy"
-                animate={{
-                  y: [0, -20, 0],
-                  rotateZ: [0, 5, 0],
-                  rotateX: [0, 10, 0],
-                  perspective: 1000,
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                style={{ transformStyle: "preserve-3d" }}
+                className="hero-floating-image"
               />
             </motion.div>
           </Col>
