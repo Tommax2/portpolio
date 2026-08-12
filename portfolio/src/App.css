@@ -1608,6 +1608,32 @@ html[data-theme="light"] .skill { background:rgba(247,246,252,.72); backdrop-fil
 .project-empty-state p { width:100%; margin:0 0 24px; text-align:left; }
 @media (max-width:767.98px) { .projects-page .project .nav.nav-pills { width:100%; display:grid; grid-template-columns:repeat(3,1fr); } .projects-page .project .nav.nav-pills .nav-link { min-width:0; height:100%; padding:10px 5px; } .projects-page .proj-imgbx { height:210px; } .project-empty-state { padding:30px 22px; } }
 
+@media (max-width:767.98px) {
+  .projects-page .project-actions { display:grid; grid-template-columns:1fr; gap:9px; margin-top:2px; }
+  .projects-page .project-actions .view-project-link,
+  .projects-page .project-actions .cta-link {
+    width:100%;
+    min-height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    padding:11px 16px;
+    border-radius:13px;
+    text-align:center;
+    font-size:13px;
+    font-weight:700;
+    line-height:1.2;
+  }
+  .projects-page .project-actions .cta-link {
+    border:1px solid var(--mobile-line,var(--line));
+    background:var(--surface-2);
+    color:var(--text);
+  }
+  .projects-page .project-actions .cta-link:hover,
+  .projects-page .project-actions .cta-link:active { color:var(--text); background:color-mix(in srgb,var(--surface-2) 75%,var(--accent)); }
+}
+
 /* Softer light theme — muted gray instead of stark white */
 html[data-theme="light"] { --bg:#e9e9ee; --surface:#f2f2f5; --surface-2:#dedee6; --text:#211f2b; --muted:#65636f; --line:rgba(35,31,52,.14); }
 html[data-theme="light"] body,
