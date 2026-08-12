@@ -21,3 +21,9 @@ build/
 # never commit local git copies
 .git_disabled/
 .git_disabled_local_backup/
+
+# downloaded browser pages and session artifacts
+*.download
+*.enc
+*WhatsApp.html
+*WhatsApp_files/
