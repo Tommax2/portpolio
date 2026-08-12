@@ -1,5 +1,8 @@
 import { Col } from "react-bootstrap";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "react-bootstrap-icons";
+
+/* eslint-disable react/prop-types */
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -13,7 +16,7 @@ const cardVariants = {
 
 export const ProjectCards = ({ title, description, imgUrl, url, techStack, cta }) => {
   return (
-    <Col sm={6} md={4} className="d-flex">
+    <Col sm={6} lg={4} className="d-flex">
       <motion.div
         variants={cardVariants}
         initial="hidden"
@@ -29,12 +32,13 @@ export const ProjectCards = ({ title, description, imgUrl, url, techStack, cta }
         <div className="proj-txtx">
           <h4>{title}</h4>
           <p>{description}</p>
-          {techStack && <p className="tech-stack"><strong>Tech Stack:</strong> {techStack}</p>}
-          <a href={url} target="_blank" rel="noreferrer" className="view-project-link">View Project</a>
+          {techStack && <div className="tech-stack" aria-label="Technologies used">{techStack.split(",").map((tech) => <span key={tech}>{tech.trim()}</span>)}</div>}
+          <div className="project-actions">
+          <a href={url} target="_blank" rel="noreferrer" className="view-project-link">View project <ArrowUpRight /></a>
           {cta && (
             cta === "WhatsApp me" ? (
-              <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noreferrer" className="cta-link whatsapp-link">
-                {cta}
+              <a href="https://wa.me/2348110736175" target="_blank" rel="noreferrer" className="cta-link whatsapp-link">
+                Let&apos;s talk
               </a>
             ) : (
               <a href={url} target="_blank" rel="noreferrer" className="cta-link">
@@ -42,6 +46,7 @@ export const ProjectCards = ({ title, description, imgUrl, url, techStack, cta }
               </a>
             )
           )}
+          </div>
         </div>
       </motion.div>
     </Col>

@@ -66,12 +66,6 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
-@font-face {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  src: url();
-  font-weight:700 ;
-}
-
 *{
   margin: 0;
   padding: 0;
@@ -90,9 +84,38 @@ body{
   color: #fff;
   font-family: 'Inter', sans-serif;
 }
+
+/* Martins portfolio design system */
+:root {
+  --bg: #080808;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --text: #f4f6f4;
+  --muted: #b8b8b8;
+  --line: rgba(255,255,255,.12);
+  --accent: #ffffff;
+  --accent-ink: #080808;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f7f6fc;
+  --surface: #ffffff;
+  --surface-2: #eeebfa;
+  --text: #1d1930;
+  --muted: #686278;
+  --line: rgba(49,38,91,.14);
+  --accent: #6547d8;
+  --accent-ink: #fff;
+  color-scheme: light;
+}
+body { background: var(--bg); color: var(--text); transition: background .3s ease, color .3s ease; }
+::selection { background: var(--accent); color: var(--accent-ink); }
 h1,h2,h3,h4,h5,h6{
   padding: 0;
   margin: 0;
-  line-height: none
+  line-height: 1.15;
 
 }
+a, button, input, textarea { font:inherit; }
+button, a { -webkit-tap-highlight-color:transparent; }
+:focus-visible { outline:3px solid var(--text); outline-offset:3px; }

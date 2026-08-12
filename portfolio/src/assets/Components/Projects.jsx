@@ -88,8 +88,9 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
+              <span className="eyebrow">Selected work</span>
               <h2>Featured Projects</h2>
-              <p>Explore a selection of my recent work, showcasing my expertise in building robust, scalable, and visually stunning web applications. Each project represents a unique challenge solved with modern technology.</p>
+              <p>Websites and digital products I’ve designed and built for businesses, creators, and growing brands.</p>
             </motion.div>
             <Tab.Container id="projects-tabs" defaultActiveKey="first">
             <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-item-center" id="pills-tab">
@@ -121,7 +122,12 @@ export const Projects = () => {
                     </Row>
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
-                  <p>I am always open to new opportunities and collaborations. If you have a project in mind, feel free to reach out!</p>
+                  <div className="project-empty-state">
+                    <span className="eyebrow">Coming next</span>
+                    <h3>More work is on the way.</h3>
+                    <p>I’m always exploring new ideas and collaborations. Have something in mind?</p>
+                    <a href="https://wa.me/2348110736175" target="_blank" rel="noreferrer" className="view-project-link">Start a project</a>
+                  </div>
                 </Tab.Pane>
             </Tab.Content>
             </Tab.Container>

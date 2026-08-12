@@ -1,49 +1,38 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from "react-bootstrap-icons";
+import { ArrowRight, ArrowRightCircle } from "react-bootstrap-icons";
 import Port1 from "../img/port1.jpeg";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+const ROTATING_ROLES = ["Web Developer", "Data Analyst", "UI/UX Designer"];
+
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const toRotate = ["Web Developer", "Data Analyst", "UI/UX Designer"];
   const [text, setText] = useState("");
   const [delta, setDelta] = useState(300 - Math.random() * 100);
   const period = 2000;
 
   useEffect(() => {
-    let ticker = setInterval(() => {
-      tick();
-    }, delta);
-
-    return () => {
-      clearInterval(ticker);
-    };
-  }, [text]);
-
-  const tick = () => {
-    let i = loopNum % toRotate.length;
-    let fullText = toRotate[i];
-    let updatedText = isDeleting
+    const i = loopNum % ROTATING_ROLES.length;
+    const fullText = ROTATING_ROLES[i];
+    const updatedText = isDeleting
       ? fullText.substring(0, text.length - 1)
       : fullText.substring(0, text.length + 1);
-
-    setText(updatedText);
-
-    if (isDeleting) {
-      setDelta((prevDelta) => prevDelta / 2);
-    }
-
-    if (!isDeleting && updatedText === fullText) {
-      setIsDeleting(true);
-      setDelta(period);
-    } else if (isDeleting && updatedText === "") {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setDelta(500);
-    }
-  };
+    const ticker = setTimeout(() => {
+      setText(updatedText);
+      if (isDeleting) setDelta((previous) => previous / 2);
+      if (!isDeleting && updatedText === fullText) {
+        setIsDeleting(true);
+        setDelta(period);
+      } else if (isDeleting && updatedText === "") {
+        setIsDeleting(false);
+        setLoopNum((previous) => previous + 1);
+        setDelta(500);
+      }
+    }, delta);
+    return () => clearTimeout(ticker);
+  }, [delta, isDeleting, loopNum, text]);
 
   return (
     <section className="banner" id="home">
@@ -55,38 +44,35 @@ export const Banner = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="tagline">Welcome to my portfolio</span>
               <h1>
-                {"Hi, I'm Martins"} <span className="wrap">{text}</span>
+                I build digital products that <span className="accent-text">work</span><small className="role-line">Martins Olumi - <span className="wrap">{text}</span></small>
               </h1>
               <p>
-                I am a dedicated Developer and Data Analyst with a passion for
-                building innovative digital solutions and turning raw data into
-                actionable insights. With expertise in modern web technologies,
-                data visualization, and statistical analysis, I transform
-                complex ideas into elegant, user-centric applications and
-                complex datasets into clear, compelling stories that drive
-                smarter decisions. Explore my work and let's build something
-                amazing together.
+                Full-stack developer and data analyst focused on thoughtful interfaces,
+                reliable systems, and insights that help businesses move with confidence.
               </p>
-              <button
-                onClick={() =>
-                  (window.location.href = "https://wa.me/2348110736175")
-                }
-              >
-                Let's connect <ArrowRightCircle size={25} />
-              </button>
+              <div className="hero-actions">
+                <a className="hero-primary" href="https://wa.me/2348110736175" target="_blank" rel="noreferrer">
+                  Start a project <ArrowRightCircle size={22} />
+                </a>
+                <a className="hero-secondary" href="#/projects">View my work <ArrowRight size={19} /></a>
+              </div>
+              <div className="hero-proof" aria-label="Professional highlights">
+                <div><strong>Full-stack</strong><span>Web products</span></div>
+                <div><strong>Data-led</strong><span>Clear insights</span></div>
+                <div><strong>Human-first</strong><span>Useful design</span></div>
+              </div>
             </motion.div>
           </Col>
           <Col xs={12} md={6} xl={5}>
-            <motion.div
+            <motion.div className="hero-portrait"
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
               <motion.img
                 src={Port1}
-                alt="Header Img"
+                alt="Martins Olumi"
                 loading="lazy"
                 animate={{
                   y: [0, -20, 0],

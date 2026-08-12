@@ -1,73 +1,56 @@
+import { useEffect, useState } from "react";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { FaMoon, FaSun } from "react-icons/fa";
 
-import { useEffect, useState } from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { FaGithub, FaLinkedin, FaWhatsapp, FaFacebook } from 'react-icons/fa';
+/* eslint-disable react/prop-types */
 
-export const NavBar = () =>{
-    const [activeLink, setActiveLink] = useState('home');
-    const [scrolled, setScrolled] = useState(false);
-    const [expanded, setExpanded] = useState(false);
+export const NavBar = ({ theme, onToggleTheme }) => {
+  const [activeLink, setActiveLink] = useState("/");
+  const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-    useEffect(() => {
-      const onHashChange = () => {
-        const hash = (window.location.hash || '#home').replace('#', '');
-        setActiveLink(hash);
-      };
-      onHashChange();
-      window.addEventListener('hashchange', onHashChange);
-      return () => window.removeEventListener('hashchange', onHashChange);
-    }, []);
+  useEffect(() => {
+    const onHashChange = () => setActiveLink((window.location.hash || "#/").replace("#", ""));
+    onHashChange();
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
-     useEffect(() =>{
-       const onScroll = () =>{
-         if (window.scrollY > 50){
-            setScrolled(true);
-         } else{
-            setScrolled(false);
-         }
-       }
-       window.addEventListener("scroll", onScroll);
-       return () => window.removeEventListener('scroll', onScroll);
-     },[])
-     const  onUpdateActiveLink = (value) => {
-      setActiveLink(value);
-      setExpanded(false);
-     }
-    return(
-        <Navbar
-          expand="lg"
-          expanded={expanded}
-          onToggle={(nextExpanded) => setExpanded(nextExpanded)}
-          className={`${scrolled ? 'scrolled' : ''} navbar-glass`}
-        >
-        <div className="navbar-shell">
-          <Navbar.Brand href="#home">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" className="logo-img" />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home" className={activeLink === 'home'? 'active navbar-link' : "navbar-link"} onClick ={() => onUpdateActiveLink ('home')}>Home</Nav.Link>
-              <Nav.Link href="#Skill" className={activeLink === 'Skill'? 'active navbar-link' : "navbar-link"} onClick ={() => onUpdateActiveLink ('Skill')}>Skill</Nav.Link>
-              <Nav.Link href="#Projects" className={activeLink === 'Projects'? 'active navbar-link' : "navbar-link"} onClick ={() => onUpdateActiveLink ('Projects')}>Projects</Nav.Link>
-           
-            </Nav>
-            
-            <span className="navbar-text">
-                <div className='social-icon'>
-                    <a href="https://github.com/Tommax2" target="_blank" rel="noreferrer"><FaGithub color="white" size={20} /></a>
-                    <a href="https://www.linkedin.com/in/martins-olumi-9b6b07317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noreferrer"><FaLinkedin color="white" size={20} /></a>
-                    <a href="https://wa.me/2348110736175" target="_blank" rel="noreferrer"><FaWhatsapp color="white" size={20} /></a>
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebook color="white" size={20} /></a>
-                </div>
-                <button className='vvd' onClick={() => window.location.href = 'https://wa.me/2348110736175'}><span>Let's connect</span></button>
-            </span>
-           
-          </Navbar.Collapse>
-        </div>
-      </Navbar>
-    );
-    
-}
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const selectLink = (value) => {
+    setActiveLink(value);
+    setExpanded(false);
+  };
+
+  return (
+    <Navbar expand="lg" expanded={expanded} onToggle={setExpanded} className={`${scrolled ? "scrolled" : ""} navbar-glass`}>
+      <div className="navbar-shell">
+        <Navbar.Brand href="#/" className="brand-lockup" onClick={() => selectLink("/")}>
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Tommax - Developing your imaginations" className="site-logo" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="main-navigation" aria-label="Toggle navigation" />
+        <Navbar.Collapse id="main-navigation">
+          <Nav className="me-auto">
+            <Nav.Link href="#/" className={activeLink === "/" ? "active navbar-link" : "navbar-link"} onClick={() => selectLink("/")}>Home</Nav.Link>
+            <Nav.Link href="#Skill" className={activeLink === "Skill" ? "active navbar-link" : "navbar-link"} onClick={() => selectLink("Skill")}>Skills</Nav.Link>
+            <Nav.Link href="#/experience" className={activeLink === "/experience" ? "active navbar-link" : "navbar-link"} onClick={() => selectLink("/experience")}>Experience</Nav.Link>
+            <Nav.Link href="#/projects" className={activeLink === "/projects" ? "active navbar-link" : "navbar-link"} onClick={() => selectLink("/projects")}>Projects</Nav.Link>
+          </Nav>
+          <span className="navbar-text">
+            <button type="button" className="theme-toggle" onClick={onToggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}>
+              {theme === "dark" ? <FaSun size={18} /> : <FaMoon size={18} />}
+            </button>
+            <a className="vvd nav-contact" href="https://wa.me/2348110736175" target="_blank" rel="noreferrer">{"Let's connect"}</a>
+          </span>
+        </Navbar.Collapse>
+      </div>
+    </Navbar>
+  );
+};
