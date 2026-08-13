@@ -59,9 +59,9 @@ function App() {
   let page;
 
   if (normalizedPath === "/terms-and-conditions") {
-    page = <><TermsAndConditions /><Footer /></>;
+    page = <><NavBar theme={theme} onToggleTheme={toggleTheme} /><main><TermsAndConditions /></main><Footer /></>;
   } else if (normalizedPath === "/privacy-policy") {
-    page = <><PrivacyPolicy /><Footer /></>;
+    page = <><NavBar theme={theme} onToggleTheme={toggleTheme} /><main><PrivacyPolicy /></main><Footer /></>;
   } else if (normalizedPath === "/experience") {
     page = <><NavBar theme={theme} onToggleTheme={toggleTheme} /><main className="experience-page"><Experience /></main><Footer /></>;
   } else if (normalizedPath === "/projects") {
