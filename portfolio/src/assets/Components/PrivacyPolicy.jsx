@@ -52,7 +52,7 @@ export const PrivacyPolicy = () => (
       <p>This policy may be updated when the website or its services change. The date above indicates when the latest version took effect.</p>
 
       <h2>Contact</h2>
-      <p>For privacy questions or requests, return to the <a href="#/">home page</a> and use the contact form.</p>
+      <p>For privacy questions or requests, use the <a href="#connect">contact form</a>.</p>
     </Container>
   </section>
 );

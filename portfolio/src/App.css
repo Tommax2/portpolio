@@ -1839,3 +1839,15 @@ html[data-has-scrolled="true"] .back-to-top { opacity:1; visibility:visible; tra
 .project-no-results p { width:auto; margin:0; text-align:center; }
 @media (max-width:767.98px) { .back-to-top { right:14px; bottom:14px; width:43px; height:43px; } .project-search-wrap { align-items:stretch; flex-direction:column; gap:8px; } .project-result-count { padding-left:4px; } }
 @media (prefers-reduced-motion:reduce) { .scroll-progress,.back-to-top { transition:none; } }
+
+/* Final component consistency layer */
+html[data-theme] .footer { padding:22px 0 14px; border-top:1px solid var(--line); background:var(--surface); }
+html[data-theme] .footer::before { display:none; }
+html[data-theme] .footer::after { height:1px; background:var(--text); animation:none; opacity:.35; }
+html[data-theme] .footer-site-logo { width:110px; height:46px; border:0; background:transparent; box-shadow:none; }
+html[data-theme] .footer-links { margin:8px 0 6px; }
+html[data-theme] .legal-page { background:var(--bg); color:var(--text); }
+html[data-theme] .legal-page .container { border-color:var(--line); background:color-mix(in srgb,var(--surface) 92%,transparent); }
+html[data-theme] .projects-page .project-actions .cta-link { min-height:44px; margin:0; }
+html[data-theme="light"] .contact img { padding:8px; border:1px solid rgba(35,31,52,.12); border-radius:20px; background:#dedee6; box-shadow:0 14px 32px rgba(35,31,52,.1); }
+@media (max-width:575.98px) { html[data-theme] .footer { padding:18px 0 12px; } }

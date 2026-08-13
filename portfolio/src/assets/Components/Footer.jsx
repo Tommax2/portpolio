@@ -20,7 +20,7 @@ export const Footer = () => {
               <a href={`${baseUrl}#/terms-and-conditions`}>Terms and Conditions</a>
               <a href={`${baseUrl}#/privacy-policy`}>Privacy Policy</a>
             </div>
-            <p>© 2026 Martins (Tommax). All rights reserved.</p>
+            <p>&copy; 2026 Martins (Tommax). All rights reserved.</p>
           </Col>
         </Row>
       </Container>

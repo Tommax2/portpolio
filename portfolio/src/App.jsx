@@ -36,7 +36,15 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const sectionId = window.location.hash.replace("#", "");
+    if (sectionId && !sectionId.startsWith("/")) {
+      const frame = requestAnimationFrame(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      return () => cancelAnimationFrame(frame);
+    }
     window.scrollTo({ top: 0, behavior: "auto" });
+    return undefined;
   }, [normalizedPath]);
 
   useEffect(() => {

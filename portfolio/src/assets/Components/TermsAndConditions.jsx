@@ -43,7 +43,7 @@ export const TermsAndConditions = () => (
       <p>I may revise these Terms and Conditions when necessary. The updated date above will show when the latest revision took effect. Continued use of the website means you accept the revised terms.</p>
 
       <h2>Contact</h2>
-      <p>For questions about these terms, return to the <a href="#/">home page</a> and use the contact form.</p>
+      <p>For questions about these terms, use the <a href="#connect">contact form</a>.</p>
     </Container>
   </section>
 );
