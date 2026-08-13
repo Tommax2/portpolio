@@ -10,8 +10,11 @@ import TransformedAcademy from "../img/thetransformed.jpeg";
 import Funora from "../img/funora.png";
 import Alatike from "../img/alatike.svg";
 import Riikys from "../img/riikys.jpg";
+import { useState } from "react";
+import { Search, X } from "react-bootstrap-icons";
 
 export const Projects = () => {
+  const [query, setQuery] = useState("");
   const projects = [
     {
       title: "Rikkys Perfume",
@@ -78,6 +81,14 @@ export const Projects = () => {
     },
   ];
 
+  const matchesQuery = ({ title, description, techStack = "" }) => {
+    const search = query.trim().toLowerCase();
+    return !search || `${title} ${description} ${techStack}`.toLowerCase().includes(search);
+  };
+  const filteredProjects = projects.filter(matchesQuery);
+  const filteredDesignProjects = designProjects.filter(matchesQuery);
+  const resultCount = filteredProjects.length + filteredDesignProjects.length;
+
   return (
     <section className="project" id="Projects">
       <Container>
@@ -92,6 +103,15 @@ export const Projects = () => {
               <h2>Featured Projects</h2>
               <p>Websites and digital products I’ve designed and built for businesses, creators, and growing brands.</p>
             </motion.div>
+            <div className="project-search-wrap">
+              <label className="project-search">
+                <Search aria-hidden="true" />
+                <span className="visually-hidden">Search projects</span>
+                <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by project or technology" type="search" />
+                {query && <button type="button" onClick={() => setQuery("")} aria-label="Clear project search"><X size={20} /></button>}
+              </label>
+              <span className="project-result-count" aria-live="polite">{resultCount} {resultCount === 1 ? "result" : "results"}</span>
+            </div>
             <Tab.Container id="projects-tabs" defaultActiveKey="first">
             <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-item-center" id="pills-tab">
               <Nav.Item>
@@ -107,18 +127,20 @@ export const Projects = () => {
             <Tab.Content>
                 <Tab.Pane eventKey ="first">
                 <Row className="g-4">
-                  {projects.map((project) => (
+                  {filteredProjects.map((project) => (
                     <ProjectCards key={project.url} {...project} />
                   ))}
+                  {filteredProjects.length === 0 && <div className="project-no-results"><h3>No matching web apps</h3><p>Try a project name or a technology such as React, MongoDB, or Stripe.</p></div>}
                 </Row>
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
                     <Row className="g-4">
-                      {designProjects.map((project) => {
+                      {filteredDesignProjects.map((project) => {
                         return (
                           <ProjectCards key={project.url} {...project} />
                         );
                       })}
+                      {filteredDesignProjects.length === 0 && <div className="project-no-results"><h3>No matching design work</h3><p>Try a broader search or clear the search field.</p></div>}
                     </Row>
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
