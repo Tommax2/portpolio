@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import contactImg from "../img/contact.jpeg";
+import contactImg from "../img/contact-modern.jpg";
 import { motion } from "framer-motion";
 
 // Replace with your Formspree form ID from formspree.io
@@ -70,18 +70,20 @@ export const Contact = () => {
         <Row className="align-items-center">
           <Col md={6}>
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -18 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0.01, margin: "0px 0px 140px 0px" }}
+              transition={{ duration: 0.35 }}
             >
-              <img src={contactImg} alt="Contact Us" />
+              <img src={contactImg} alt="Digital collaboration workspace with analytics and messaging" width="800" height="533" loading="eager" fetchPriority="auto" decoding="async" />
             </motion.div>
           </Col>
           <Col md={6}>
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 18 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0.01, margin: "0px 0px 140px 0px" }}
+              transition={{ duration: 0.35 }}
             >
               <h2>{"Let's Collaborate"}</h2>
               <p className="mb-4">

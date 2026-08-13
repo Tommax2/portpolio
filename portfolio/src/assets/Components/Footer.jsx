@@ -8,7 +8,7 @@ export const Footer = () => {
       <Container>
         <Row className="align-items-center">
           <Col sm={6} className="text-center text-sm-start footer-brand">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Tommax" className="site-logo footer-site-logo" />
+            <img src={`${import.meta.env.BASE_URL}logo-transparent-small.png`} alt="Tommax" className="site-logo footer-site-logo" width="475" height="300" loading="lazy" decoding="async" />
           </Col>
           <Col sm={6} className="text-center text-sm-end">
             <div className="social-icon">

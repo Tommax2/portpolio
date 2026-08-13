@@ -33,7 +33,7 @@ export const NavBar = ({ theme, onToggleTheme }) => {
     <Navbar expand="lg" expanded={expanded} onToggle={setExpanded} className={`${scrolled ? "scrolled" : ""} navbar-glass`}>
       <div className="navbar-shell">
         <Navbar.Brand href="#/" className="brand-lockup" onClick={() => selectLink("/")}>
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Tommax - Developing your imaginations" className="site-logo" />
+          <img src={`${import.meta.env.BASE_URL}logo-transparent-small.png`} alt="Tommax - Developing your imaginations" className="site-logo" width="475" height="300" decoding="async" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navigation" aria-label="Toggle navigation" />
         <Navbar.Collapse id="main-navigation">

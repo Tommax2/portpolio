@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRight, ArrowRightCircle } from "react-bootstrap-icons";
-import Port1 from "../img/port1.jpeg";
+import Port1 from "../img/port1-optimized.jpg";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -73,8 +73,8 @@ export const Banner = () => {
               <motion.img
                 src={Port1}
                 alt="Martins Olumi"
-                width="810"
-                height="1080"
+                width="480"
+                height="640"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"

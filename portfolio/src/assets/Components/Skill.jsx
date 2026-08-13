@@ -19,9 +19,10 @@ export const Skill = () => {
                     <Col>
                         <motion.div
                             className='skill-bx'
-                            initial={{ opacity: 0, y: 50 }}
+                            initial={{ opacity: 0, y: 18 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true, amount: 0.01, margin: "0px 0px 140px 0px" }}
+                            transition={{ duration: 0.35 }}
                         >
                             <span className="eyebrow">What I do</span>
                             <h2>Skills I use to bring ideas to life.</h2>
@@ -31,11 +32,11 @@ export const Skill = () => {
                                     <motion.div
                                         className='item'
                                         key={label}
-                                        initial={{ opacity: 0, y: 18 }}
+                                        initial={{ opacity: 0, y: 8 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
+                                        viewport={{ once: true, amount: 0.01, margin: "0px 0px 120px 0px" }}
                                         whileHover={{ y: -6, scale: 1.03 }}
-                                        transition={{ duration: 0.3, delay: index * 0.04 }}
+                                        transition={{ duration: 0.22, delay: index * 0.015 }}
                                     >
                                         <Icon size={58} color={color} />
                                         <h5>{label}</h5>
