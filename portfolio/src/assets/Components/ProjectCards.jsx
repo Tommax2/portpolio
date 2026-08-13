@@ -27,7 +27,7 @@ export const ProjectCards = ({ title, description, imgUrl, url, techStack, cta }
         transition={{ duration: 0.3 }}
       >
         <div className="proj-imgbx">
-          <img src={imgUrl} alt={title} loading="lazy" />
+          <img src={imgUrl} alt={title} loading="lazy" decoding="async" />
         </div>
         <div className="proj-txtx">
           <h4>{title}</h4>

@@ -1,18 +1,19 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { NavBar } from "./assets/Components/NavBar";
 import { Banner } from "./assets/Components/Banner";
 import { Skill } from "./assets/Components/Skill";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Projects } from "./assets/Components/Projects";
 import { Footer } from "./assets/Components/Footer";
 import { Contact } from "./assets/Components/Contact";
-import { TermsAndConditions } from "./assets/Components/TermsAndConditions";
-import { PrivacyPolicy } from "./assets/Components/PrivacyPolicy";
-import { Experience } from "./assets/Components/Experience";
 import { LiveBackground } from "./assets/Components/LiveBackground";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "react-bootstrap-icons";
+
+const Projects = lazy(() => import("./assets/Components/Projects").then((module) => ({ default: module.Projects })));
+const Experience = lazy(() => import("./assets/Components/Experience").then((module) => ({ default: module.Experience })));
+const TermsAndConditions = lazy(() => import("./assets/Components/TermsAndConditions").then((module) => ({ default: module.TermsAndConditions })));
+const PrivacyPolicy = lazy(() => import("./assets/Components/PrivacyPolicy").then((module) => ({ default: module.PrivacyPolicy })));
 
 const getNormalizedPath = () => {
   const rawHash = window.location.hash.replace("#", "");
@@ -82,7 +83,9 @@ function App() {
           exit={{ opacity: 0, y: -12, filter: "blur(6px)" }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          {page}
+          <Suspense fallback={<div className="route-loader" role="status" aria-label="Loading page"><span /></div>}>
+            {page}
+          </Suspense>
         </motion.div>
       </AnimatePresence>
       <button className="back-to-top" type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">

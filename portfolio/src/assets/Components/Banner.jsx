@@ -73,7 +73,11 @@ export const Banner = () => {
               <motion.img
                 src={Port1}
                 alt="Martins Olumi"
-                loading="lazy"
+                width="810"
+                height="1080"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="hero-floating-image"
               />
             </motion.div>
